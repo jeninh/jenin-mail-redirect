@@ -12,7 +12,7 @@ def catch_all(path):
     if request.query_string:
         target_url += f"?{request.query_string.decode('utf-8')}"
     
-    return redirect(target_url, code=302)
+    return redirect(target_url, code=301)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
