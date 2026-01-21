@@ -6,7 +6,11 @@ app = Flask(__name__)
 @app.route('/<path:path>')
 def catch_all(path):
     """Redirect all requests to fulfillment.hackclub.com with the same path."""
-    target_url = f"https://fulfillment.hackclub.com/{path}"
+    # For root path, redirect to plain domain without trailing slash
+    if path == '':
+        target_url = "https://fulfillment.hackclub.com"
+    else:
+        target_url = f"https://fulfillment.hackclub.com/{path}"
     
     # Preserve query parameters if any
     if request.query_string:
