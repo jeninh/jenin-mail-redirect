@@ -30,6 +30,18 @@ Once running, any path accessed on this service will redirect to the same path o
 - `http://localhost:5000/abc` → `https://fulfillment.hackclub.com/abc`
 - `http://localhost:5000/test/path?foo=bar` → `https://fulfillment.hackclub.com/test/path?foo=bar`
 
+## Docker
+
+Build and run with Docker:
+
+```bash
+# Build the image
+docker build -t jenin-mail-redirect .
+
+# Run the container
+docker run -d -p 5000:5000 jenin-mail-redirect
+```
+
 ## Deployment
 
 For production deployment, use a production WSGI server like Gunicorn:
@@ -38,3 +50,5 @@ For production deployment, use a production WSGI server like Gunicorn:
 pip install gunicorn
 gunicorn app:app
 ```
+
+Or use the provided Dockerfile which includes Gunicorn for production-ready deployment.
